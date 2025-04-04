@@ -10,3 +10,4 @@ pyproj
 fiona
 certifi
 gunicorn
+chromium
