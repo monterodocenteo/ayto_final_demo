@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Administración de Solicitudes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f6f8fa;
+      color: #333;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 260px;
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .sidebar nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .sidebar nav a:hover {
+      text-decoration: underline;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .header {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .table th, .table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .table th {
+      background-color: #e6eef4;
+    }
+    .estado {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .estado.revision { background-color: #fffae6; color: #b27f00; }
+    .estado.aprobada { background-color: #e6ffed; color: #1a7f37; }
+    .estado.rechazada { background-color: #ffe6e6; color: #cc0000; }
+    .accion-btn {
+      background-color: #003366;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .accion-btn:hover {
+      background-color: #00509e;
+    }
+    .detalle {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+    .detalle h3 {
+      margin-top: 0;
+    }
+    .campo {
+      margin-bottom: 10px;
+    }
+    .campo label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .campo input, .campo select, .campo textarea {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    .botones {
+      margin-top: 20px;
+    }
+    .botones button {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .botones button:hover {
+      background-color: #00509e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar" style="padding-top: 100px;">
+      <h2>Panel de Control</h2>
+      <nav>
+        <a href="#">📋 Solicitudes</a>
+        <a href="#">📊 Estadísticas</a>
+        <a href="#">⚙️ Configuración</a>
+        <a href="#">🔒 Cerrar sesión</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <div class="header">Listado de Solicitudes</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>RefCat</th>
+            <th>Solicitante</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>5981453VK1958S</td>
+            <td>Juan Pérez</td>
+            <td><span class="estado revision">⏳ En revisión</span></td>
+            <td>01/04/2025</td>
+            <td><button class="accion-btn">Ver</button></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>6397209VK1969N</td>
+            <td>Ana Gómez</td>
+            <td><span class="estado aprobada">✅ Aprobada</span></td>
+            <td>02/04/2025</td>
+            <td><button class="accion-btn">Ver</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="detalle">
+        <h3>Detalle de Solicitud</h3>
+        <div class="campo">
+          <label>RefCat</label>
+          <input type="text" value="5981453VK1958S" disabled>
+        </div>
+        <div class="campo">
+          <label>Nombre del solicitante</label>
+          <input type="text" value="Juan Pérez" disabled>
+        </div>
+        <div class="campo">
+          <label>Estado</label>
+          <select>
+            <option>En revisión</option>
+            <option>Aprobada</option>
+            <option>Rechazada</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Requisitos técnicos</label>
+          <select>
+            <option style="color: green;">✔ OK</option>
+            <option style="color: red;">✘ KO</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Requisitos gestión residuos</label>
+          <select>
+            <option style="color: green;">✔ OK</option>
+            <option style="color: red;" selected>✘ KO</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>📎 Documentos adjuntos</label>
+          <ul>
+            <li><a href="#">Memoria técnica.pdf</a></li>
+            <li><a href="#">Gestión residuos.pdf</a></li>
+          </ul>
+        </div>
+        <div class="botones">
+          <button>💾 Guardar cambios</button>
+          <button>📩 Notificar resolución</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>
