@@ -2,3 +2,12 @@ streamlit
 bokeh
 pandas
 numpy
+geopandas
+json
+os
+sys
+geopandas
+csv
+time
+platform
+webbrowser
