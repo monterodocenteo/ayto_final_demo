@@ -22,6 +22,24 @@ from bokeh.server.server import Server
 import webbrowser
 from pathlib import Path
 
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
+import chromedriver_autoinstaller
+
+chromedriver_autoinstaller.install()
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.binary_location = "/usr/bin/chromium-browser"
+
+service = ChromeService()
+
+driver = webdriver.Chrome(service=service, options=chrome_options)
+
+
 # CARGA DATOS
 
 # Variable global para almacenar el REFCAT seleccionado
