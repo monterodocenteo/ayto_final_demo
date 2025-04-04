@@ -48,7 +48,7 @@ usos = {
 
 # Cargamos RefCat + Uso como diccionario
 usos_por_refcat = defaultdict(list)
-with open('data/refcat_uso.csv', mode='r', encoding='utf-8') as archivo:
+with open('refcat_uso.csv', mode='r', encoding='utf-8') as archivo:
     lector = csv.DictReader(archivo, delimiter=';')
     for fila in lector:
         refcat = fila['RefCat'].strip()
@@ -58,7 +58,7 @@ with open('data/refcat_uso.csv', mode='r', encoding='utf-8') as archivo:
 usos_por_refcat = dict(usos_por_refcat)  # opcional
 
 # Cargar el GeoJSON
-gdf = gpd.read_file("data/CONSTRU GEOJSON.json")
+gdf = gpd.read_file("CONSTRU GEOJSON.json")
 
 # Añadir columna 'Uso' al GeoDataFrame
 def obtener_uso(refcat):
