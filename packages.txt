@@ -1,3 +1,7 @@
 gdal-bin
 libgdal-dev
 libproj-dev
+libgeos-dev
+poppler-utils
+chromium-chromedriver
+chromium-browser
